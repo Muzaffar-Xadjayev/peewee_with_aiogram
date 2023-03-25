@@ -30,3 +30,11 @@ class Questions(BaseModel):
 
     class Meta:
         db_name = "Questions"
+
+class Feedback(BaseModel):
+    author = ForeignKeyField(Users, to_field='full_name', on_delete='CASCADE')
+    text = CharField(max_length=500)
+    sent_date = DateTimeField(formats=["%Y-%m-%d %H:%M"])
+
+    class Meta:
+        db_name = "Feedback"
